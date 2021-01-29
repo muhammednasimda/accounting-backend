@@ -9,3 +9,5 @@ router.post("/", async (req, res) => {
   const response = await models.customers.create({ ...req.body });
   res.json(response);
 });
+
+module.exports = router;

@@ -8,3 +8,5 @@ router.post("/", async (req, res) => {
   const response = await models.exchange.create({ ...req.body });
   res.json(response);
 });
+
+module.exports = router;
