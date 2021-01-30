@@ -10,4 +10,10 @@ router.post("/", async (req, res) => {
   res.json(response);
 });
 
+//get all customers
+router.get("/", async (req, res) => {
+  const response = await models.customers.findAll();
+  res.json(response);
+});
+
 module.exports = router;
