@@ -13,11 +13,11 @@ app.get("/acc/test", (req, res) => {
 });
 
 app.use("/acc/payment", require("./routes/payment"));
-app.use("/acc/cash-reciept", require("./routes/cash_reciept"));
+app.use("/acc/cash_receipt", require("./routes/cash_reciept"));
 app.use("/acc/customer", require("./routes/customer"));
 app.use("/acc/exchange", require("./routes/exchange"));
 app.use(
-  "/acc/exchange-cash-reciept",
+  "/acc/exchange_cash_reciept",
   require("./routes/exchange_cash_reciept")
 );
 app.use("/acc/purchase", require("./routes/purchase"));

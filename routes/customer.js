@@ -26,4 +26,12 @@ router.get("/", async (req, res) => {
   res.json(response);
 });
 
+//get customer by id
+router.get("/:id", async (req, res) => {
+  const response = await models.customers.findOne({
+    where: { id: req.params.id },
+  });
+  res.json(response);
+});
+
 module.exports = router;

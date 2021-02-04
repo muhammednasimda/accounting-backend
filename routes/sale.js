@@ -9,4 +9,12 @@ router.post("/", async (req, res) => {
   res.json(response);
 });
 
+//get all sales of a user
+router.get("/:customer_id", async (req, res) => {
+  const response = await models.sale.findAll({
+    where: { customer_id: req.params.customer_id },
+  });
+  res.json(response);
+});
+
 module.exports = router;
