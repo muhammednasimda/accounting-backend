@@ -16,26 +16,18 @@ function initModels(sequelize) {
   var purchase = _purchase(sequelize, DataTypes);
   var sale = _sale(sequelize, DataTypes);
 
-  cash_receipt.belongsTo(sale, { as: "sale_", foreignKey: "sale_id"});
-  sale.hasMany(cash_receipt, { as: "cash_receipts", foreignKey: "sale_id"});
+  cash_receipt.belongsTo(customers, { as: "customer_", foreignKey: "customer_id"});
+  customers.hasMany(cash_receipt, { as: "cash_receipts", foreignKey: "customer_id"});
   exchange.belongsTo(customers, { as: "customer_", foreignKey: "customer_id"});
   customers.hasMany(exchange, { as: "exchanges", foreignKey: "customer_id"});
-  exchange.belongsTo(purchase, { as: "purchase_", foreignKey: "purchase_id"});
-  purchase.hasMany(exchange, { as: "exchanges", foreignKey: "purchase_id"});
   exchange_cash_receipt.belongsTo(customers, { as: "customer_", foreignKey: "customer_id"});
   customers.hasMany(exchange_cash_receipt, { as: "exchange_cash_receipts", foreignKey: "customer_id"});
-  exchange_cash_receipt.belongsTo(exchange, { as: "exchange_", foreignKey: "exchange_id"});
-  exchange.hasMany(exchange_cash_receipt, { as: "exchange_cash_receipts", foreignKey: "exchange_id"});
   payment.belongsTo(customers, { as: "customer_", foreignKey: "customer_id"});
   customers.hasMany(payment, { as: "payments", foreignKey: "customer_id"});
-  payment.belongsTo(purchase, { as: "purchase_", foreignKey: "purchase_id"});
-  purchase.hasMany(payment, { as: "payments", foreignKey: "purchase_id"});
   purchase.belongsTo(customers, { as: "customer_", foreignKey: "customer_id"});
   customers.hasMany(purchase, { as: "purchases", foreignKey: "customer_id"});
   sale.belongsTo(customers, { as: "customer_", foreignKey: "customer_id"});
   customers.hasMany(sale, { as: "sales", foreignKey: "customer_id"});
-  sale.belongsTo(purchase, { as: "purchase_", foreignKey: "purchase_id"});
-  purchase.hasMany(sale, { as: "sales", foreignKey: "purchase_id"});
 
   return {
     cash_receipt,

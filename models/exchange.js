@@ -19,24 +19,20 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    purchase_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'purchase',
-        key: 'id'
-      }
-    },
     currency_type: {
       type: "ENUM('SR','INR','AED','')",
       allowNull: false
     },
     currency_charge: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false
     },
     currency_quantity: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
+    currency_total: {
+      type: DataTypes.FLOAT,
       allowNull: false
     }
   }, {
@@ -57,13 +53,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "customer_id" },
-        ]
-      },
-      {
-        name: "purchase_id",
-        using: "BTREE",
-        fields: [
-          { name: "purchase_id" },
         ]
       },
     ]

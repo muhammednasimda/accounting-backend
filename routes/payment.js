@@ -11,10 +11,14 @@ router.post("/", async (req, res) => {
 
 //get all payment of a user
 router.get("/:customer_id", async (req, res) => {
-  const response = await models.payment.findAll({
+  const sum_of_payments = await models.payment.sum("currency_total", {
     where: { customer_id: req.params.customer_id },
   });
-  res.json(response);
+
+  const payments = await models.payment.findAll({
+    where: { customer_id: req.params.customer_id },
+  });
+  res.json({ sum_of_payments, payments });
 });
 
 module.exports = router;

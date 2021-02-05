@@ -15,14 +15,6 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    purchase_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'purchase',
-        key: 'id'
-      }
-    },
     date: {
       type: DataTypes.DATEONLY,
       allowNull: false
@@ -32,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     currency_price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false
     }
   }, {
@@ -53,13 +45,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "customer_id" },
-        ]
-      },
-      {
-        name: "purchase_id",
-        using: "BTREE",
-        fields: [
-          { name: "purchase_id" },
         ]
       },
     ]

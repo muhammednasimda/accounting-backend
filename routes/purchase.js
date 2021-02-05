@@ -18,10 +18,14 @@ router.get("/", async (req, res) => {
 
 //get all purchases of a user
 router.get("/:customer_id", async (req, res) => {
-  const response = await models.purchase.findAll({
+  const sum_of_purchases = await models.purchase.sum("currency_total", {
     where: { customer_id: req.params.customer_id },
   });
-  res.json(response);
+
+  const purchases = await models.purchase.findAll({
+    where: { customer_id: req.params.customer_id },
+  });
+  res.json({ sum_of_purchases, purchases });
 });
 
 module.exports = router;

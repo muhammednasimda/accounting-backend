@@ -26,11 +26,15 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
       },
       currency_charge: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       currency_quantity: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      currency_total: {
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
     },
