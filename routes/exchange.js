@@ -21,4 +21,10 @@ router.get("/:customer_id", async (req, res) => {
   res.json({ sum_of_exchanges, exchanges });
 });
 
+//get all exchanges
+router.get("/", async (req, res) => {
+  const response = await models.exchange.findAll();
+  res.json(response);
+});
+
 module.exports = router;

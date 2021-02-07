@@ -21,4 +21,10 @@ router.get("/:customer_id", async (req, res) => {
   res.json({ sum_of_sales, sales });
 });
 
+//get all sales
+router.get("/", async (req, res) => {
+  const response = await models.sale.findAll();
+  res.json(response);
+});
+
 module.exports = router;
