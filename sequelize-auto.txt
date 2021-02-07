@@ -1,1 +1,1 @@
-sequelize-auto -o "./models" -d accounting -h localhost -u root -p 3082 -x silverstar -e mysql
+sequelize-auto -o "./models" -d accounting -h localhost -u root -p 3306 -x silverstar -e mysql

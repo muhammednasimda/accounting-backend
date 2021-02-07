@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    currency_price: {
+    currency_quantity: {
       type: DataTypes.FLOAT,
       allowNull: false
     },

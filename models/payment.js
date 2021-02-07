@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       type: "ENUM('SR','AED','INR','')",
       allowNull: false
     },
-    currency_price: {
+    currency_quantity: {
       type: DataTypes.FLOAT,
       allowNull: false
     }
