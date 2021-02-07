@@ -27,8 +27,11 @@ router.get("/:customer_id", async (req, res) => {
 
 //get all cash receipts
 router.get("/", async (req, res) => {
-  const response = await models.cash_receipt.findAll();
-  res.json(response);
+  const cash_receipts = await models.cash_receipt.findAll();
+  const sum_of_cash_receipts = await models.cash_receipt.sum(
+    "currency_quantity"
+  );
+  res.json({ sum_of_cash_receipts, cash_receipts });
 });
 
 module.exports = router;

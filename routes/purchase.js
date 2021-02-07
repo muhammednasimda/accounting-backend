@@ -12,8 +12,9 @@ router.post("/", async (req, res) => {
 
 //get all purchases
 router.get("/", async (req, res) => {
-  const response = await models.purchase.findAll();
-  res.json(response);
+  const purchases = await models.purchase.findAll();
+  const sum_of_purchases = await models.purchase.sum("currency_total");
+  res.json({ purchases, sum_of_purchases });
 });
 
 //get all purchases of a user

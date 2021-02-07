@@ -23,8 +23,9 @@ router.get("/:customer_id", async (req, res) => {
 
 //get all exchanges
 router.get("/", async (req, res) => {
-  const response = await models.exchange.findAll();
-  res.json(response);
+  const exchanges = await models.exchange.findAll();
+  const sum_of_exchanges = await models.exchange.sum("currency_total");
+  res.json({ exchanges, sum_of_exchanges });
 });
 
 module.exports = router;

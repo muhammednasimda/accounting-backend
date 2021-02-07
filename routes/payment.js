@@ -24,8 +24,9 @@ router.get("/:customer_id", async (req, res) => {
 
 //get all payments
 router.get("/", async (req, res) => {
-  const response = await models.payment.findAll();
-  res.json(response);
+  const payments = await models.payment.findAll();
+  const sum_of_payments = await models.payment.sum("currency_quantity");
+  res.json({ sum_of_payments, payments });
 });
 
 module.exports = router;
