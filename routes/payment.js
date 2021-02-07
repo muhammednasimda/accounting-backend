@@ -5,6 +5,7 @@ const initModels = require("../models/init-models");
 const models = initModels(sequelize);
 
 router.post("/", async (req, res) => {
+  console.log(req.body);
   const response = await models.payment.create({ ...req.body });
   res.json(response);
 });
