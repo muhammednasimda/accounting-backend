@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     currency_type: {
-      type: "ENUM('SR','INR','AED')",
+      type: DataTypes.ENUM('SR','INR','AED'),
       allowNull: false
     },
     currency_quantity: {

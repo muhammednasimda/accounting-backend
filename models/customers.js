@@ -18,6 +18,11 @@ module.exports = function(sequelize, DataTypes) {
     customer_phone: {
       type: DataTypes.STRING(30),
       allowNull: false
+    },
+    opening_balance: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      defaultValue: 0
     }
   }, {
     sequelize,

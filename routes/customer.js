@@ -12,6 +12,18 @@ router.post("/", async (req, res) => {
   res.json(response);
 });
 
+//update customer opening balance
+router.put("/update_ob", async (req, res) => {
+  const customer = await models.customers.findByPk(req.body.id);
+  if (customer) {
+    const response = await customer.update({
+      opening_balance: req.body.opening_balance,
+    });
+    res.json(response);
+  }
+  res.send("customer doesnt exist");
+});
+
 //search a customer
 router.get("/search/:searchTerm", async (req, res) => {
   const searchResponse = await models.customers.findAll({
