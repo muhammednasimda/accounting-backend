@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     currency_quantity: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL(30,20),
       allowNull: false
     }
   }, {

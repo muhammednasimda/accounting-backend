@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     customer_charge: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL(10,0),
       allowNull: false
     },
     customer_phone: {
