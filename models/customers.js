@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     customer_charge: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false
     },
     customer_phone: {
@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     opening_balance: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL(10,0),
       allowNull: false,
       defaultValue: 0
     }
