@@ -16,18 +16,38 @@ function initModels(sequelize) {
   var purchase = _purchase(sequelize, DataTypes);
   var sale = _sale(sequelize, DataTypes);
 
-  cash_receipt.belongsTo(customers, { as: "customer", foreignKey: "customer_id"});
-  customers.hasMany(cash_receipt, { as: "cash_receipts", foreignKey: "customer_id"});
-  exchange.belongsTo(customers, { as: "customer", foreignKey: "customer_id"});
-  customers.hasMany(exchange, { as: "exchanges", foreignKey: "customer_id"});
-  exchange_cash_receipt.belongsTo(customers, { as: "customer", foreignKey: "customer_id"});
-  customers.hasMany(exchange_cash_receipt, { as: "exchange_cash_receipts", foreignKey: "customer_id"});
-  payment.belongsTo(customers, { as: "customer", foreignKey: "customer_id"});
-  customers.hasMany(payment, { as: "payments", foreignKey: "customer_id"});
-  purchase.belongsTo(customers, { as: "customer", foreignKey: "customer_id"});
-  customers.hasMany(purchase, { as: "purchases", foreignKey: "customer_id"});
-  sale.belongsTo(customers, { as: "customer", foreignKey: "customer_id"});
-  customers.hasMany(sale, { as: "sales", foreignKey: "customer_id"});
+  cash_receipt.belongsTo(customers, {
+    as: "customer",
+    foreignKey: "customer_id",
+  });
+  customers.hasMany(cash_receipt, {
+    as: "cash_receipts",
+    foreignKey: "customer_id",
+  });
+  exchange.belongsTo(customers, { as: "customer", foreignKey: "customer_id" });
+  customers.hasMany(exchange, { as: "exchanges", foreignKey: "customer_id" });
+  exchange_cash_receipt.belongsTo(customers, {
+    as: "customer",
+    foreignKey: "customer_id",
+  });
+  customers.hasMany(exchange_cash_receipt, {
+    as: "exchange_cash_receipts",
+    foreignKey: "customer_id",
+  });
+  payment.belongsTo(customers, { as: "customer", foreignKey: "customer_id" });
+  customers.hasMany(payment, { as: "payments", foreignKey: "customer_id" });
+  purchase.belongsTo(customers, { as: "customer", foreignKey: "customer_id" });
+  customers.hasMany(purchase, { as: "purchases", foreignKey: "customer_id" });
+  sale.belongsTo(customers, { as: "customer", foreignKey: "customer_id" });
+  customers.hasMany(sale, { as: "sales", foreignKey: "customer_id" });
+  sale.belongsTo(customers, {
+    as: "from_customer_customer",
+    foreignKey: "from_customer",
+  });
+  customers.hasMany(sale, {
+    as: "from_customer_sales",
+    foreignKey: "from_customer",
+  });
 
   return {
     cash_receipt,

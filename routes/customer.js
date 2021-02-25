@@ -20,8 +20,9 @@ router.put("/update_ob", async (req, res) => {
       opening_balance: req.body.opening_balance,
     });
     res.json(response);
+  } else {
+    res.send("customer doesn't exist");
   }
-  res.send("customer doesnt exist");
 });
 
 //search a customer

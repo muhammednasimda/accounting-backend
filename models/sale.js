@@ -19,20 +19,28 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
+    from_customer: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'customers',
+        key: 'id'
+      }
+    },
     currency_type: {
       type: DataTypes.ENUM('SR','INR','AED'),
       allowNull: false
     },
     currency_quantity: {
-      type: DataTypes.DECIMAL(30,20),
+      type: DataTypes.DECIMAL(30,2),
       allowNull: false
     },
     currency_charge: {
-      type: DataTypes.DECIMAL(30,20),
+      type: DataTypes.DECIMAL(30,2),
       allowNull: false
     },
     currency_total: {
-      type: DataTypes.DECIMAL(30,20),
+      type: DataTypes.DECIMAL(30,2),
       allowNull: false
     }
   }, {
@@ -53,6 +61,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "customer_id" },
+        ]
+      },
+      {
+        name: "fk_foreign_fkey",
+        using: "BTREE",
+        fields: [
+          { name: "from_customer" },
         ]
       },
     ]

@@ -20,9 +20,9 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     opening_balance: {
-      type: DataTypes.DECIMAL(10,0),
+      type: DataTypes.DECIMAL(30,2),
       allowNull: false,
-      defaultValue: 0
+      defaultValue: 0.00
     }
   }, {
     sequelize,
