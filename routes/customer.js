@@ -25,6 +25,13 @@ router.put("/update_ob", async (req, res) => {
   }
 });
 
+//get sum of opening balance of all customers
+router.get("/sum_ob", async (req, res) => {
+  const sum_of_ob = await models.customers.sum("opening_balance");
+
+  res.json({ sum_of_ob });
+});
+
 //search a customer
 router.get("/search/:searchTerm", async (req, res) => {
   const searchResponse = await models.customers.findAll({
