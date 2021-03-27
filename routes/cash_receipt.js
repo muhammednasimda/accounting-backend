@@ -10,10 +10,10 @@ router.post("/", async (req, res) => {
   res.json(response);
 });
 
-//get all cash receipt of a user
+//get cash receipts of a user
 router.get("/:customer_id", async (req, res) => {
   const sum_of_cash_receipts = await models.cash_receipt.sum(
-    "currency_quantity",
+    "currency_quantity_aed",
     {
       where: { customer_id: req.params.customer_id },
     }
@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
     ],
   });
   const sum_of_cash_receipts = await models.cash_receipt.sum(
-    "currency_quantity"
+    "currency_quantity_aed"
   );
   res.json({ sum_of_cash_receipts, cash_receipts });
 });

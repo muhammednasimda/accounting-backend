@@ -20,13 +20,13 @@ router.get("/", async (req, res) => {
       },
     ],
   });
-  const sum_of_purchases = await models.purchase.sum("currency_total");
+  const sum_of_purchases = await models.purchase.sum("currency_to_give");
   res.json({ purchases, sum_of_purchases });
 });
 
 //get all purchases of a user
 router.get("/:customer_id", async (req, res) => {
-  const sum_of_purchases = await models.purchase.sum("currency_total", {
+  const sum_of_purchases = await models.purchase.sum("currency_to_give", {
     where: { customer_id: req.params.customer_id },
   });
 

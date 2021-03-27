@@ -31,7 +31,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DECIMAL(30,2),
       allowNull: false
     },
-    currency_total: {
+    currency_to_give: {
+      type: DataTypes.DECIMAL(30,2),
+      allowNull: false
+    },
+    commission: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    currency_got: {
       type: DataTypes.DECIMAL(30,2),
       allowNull: false
     }
