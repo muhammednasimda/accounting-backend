@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
 
 //get all payment of a user
 router.get("/:customer_id", async (req, res) => {
-  const sum_of_payments = await models.payment.sum("currency_quantity", {
+  const sum_of_payments = await models.payment.sum("currency_quantity_aed", {
     where: { customer_id: req.params.customer_id },
   });
 
@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
       },
     ],
   });
-  const sum_of_payments = await models.payment.sum("currency_quantity");
+  const sum_of_payments = await models.payment.sum("currency_quantity_aed");
   res.json({ sum_of_payments, payments });
 });
 
