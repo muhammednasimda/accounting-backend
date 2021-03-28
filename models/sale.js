@@ -42,6 +42,14 @@ module.exports = function(sequelize, DataTypes) {
     currency_total: {
       type: DataTypes.DECIMAL(30,2),
       allowNull: false
+    },
+    convertion_rate: {
+      type: DataTypes.DECIMAL(30,2),
+      allowNull: false
+    },
+    currency_total_aed: {
+      type: DataTypes.DECIMAL(30,2),
+      allowNull: false
     }
   }, {
     sequelize,

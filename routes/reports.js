@@ -12,14 +12,16 @@ router.get("/", async (req, res) => {
   );
   const sum_of_sale = await models.sale.sum("currency_total");
   const sum_of_purchase = await models.purchase.sum("currency_to_give");
+  const sum_of_exchange = await models.exchange.sum("currency_total");
 
   res.json({
     balance:
       parseFloat(sum_of_opening_balance) +
-      sum_of_payment +
-      sum_of_sale -
-      sum_of_cashreciept -
-      sum_of_purchase,
+      parseFloat(sum_of_exchange) +
+      parseFloat(sum_of_payment) +
+      parseFloat(sum_of_sale) -
+      parseFloat(sum_of_cashreciept) -
+      parseFloat(sum_of_purchase),
   });
 });
 
@@ -31,7 +33,7 @@ router.get("/customer/:customer_id", async (req, res) => {
   const sum_of_payment = await models.payment.sum("currency_quantity_aed", {
     where: { customer_id: req.params.customer_id },
   });
-  const sum_of_exchange = await models.exchange.sum("currency_total", {
+  const sum_of_exchange = await models.exchange.sum("currency_total_aed", {
     where: { customer_id: req.params.customer_id },
   });
   const sum_of_cashreciept = await models.cash_receipt.sum(
@@ -40,12 +42,21 @@ router.get("/customer/:customer_id", async (req, res) => {
       where: { customer_id: req.params.customer_id },
     }
   );
-  const sum_of_sale = await models.sale.sum("currency_total", {
+  const sum_of_sale = await models.sale.sum("currency_total_aed", {
     where: { customer_id: req.params.customer_id },
   });
 
   const sum_of_purchase = await models.purchase.sum("currency_to_give", {
     where: { customer_id: req.params.customer_id },
+  });
+
+  console.log({
+    opening_balance,
+    sum_of_cashreciept,
+    sum_of_exchange,
+    sum_of_payment,
+    sum_of_purchase,
+    sum_of_sale,
   });
 
   res.json({
@@ -55,6 +66,7 @@ router.get("/customer/:customer_id", async (req, res) => {
     opening_balance:
       parseFloat(opening_balance) +
       sum_of_payment +
+      sum_of_exchange +
       sum_of_sale -
       sum_of_cashreciept -
       sum_of_purchase,
