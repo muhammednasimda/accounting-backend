@@ -22,5 +22,6 @@ app.use(
 );
 app.use("/acc/purchase", require("./routes/purchase"));
 app.use("/acc/sale", require("./routes/sale"));
+app.use("/acc/report", require("./routes/reports"));
 
 app.listen(PORT);
