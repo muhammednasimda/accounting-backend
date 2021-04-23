@@ -37,7 +37,6 @@ const getBalanceByDate = async (date) => {
   });
 
   const balance =
-    parseFloat(sum_of_opening_balance) +
     parseFloat(sum_of_exchange) +
     parseFloat(sum_of_payment) +
     parseFloat(sum_of_sale) -
