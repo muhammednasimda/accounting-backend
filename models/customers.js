@@ -12,12 +12,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     customer_charge: {
-      type: DataTypes.DECIMAL(10,0),
-      allowNull: false
+      type: DataTypes.DECIMAL(10,2),
+      allowNull: true
     },
     customer_phone: {
       type: DataTypes.STRING(30),
-      allowNull: false
+      allowNull: true
     },
     opening_balance: {
       type: DataTypes.DECIMAL(30,2),

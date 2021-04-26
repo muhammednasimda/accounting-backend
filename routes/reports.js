@@ -13,6 +13,7 @@ const getProfitByDate = async (date) => {
   console.log({ balanceOfDateOne, balanceOfDateTwo, profit });
   return profit;
 };
+  
 
 const getBalanceByDate = async (date) => {
   console.log(date);

@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     from_customer: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'customers',
         key: 'id'
